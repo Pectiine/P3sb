@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title> location de vélo LYON</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.3.1/css/ol.css" type="text/css">
+  
+  <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.3.1/build/ol.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Spicy+Rice&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Londrina+Shadow&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="stylesheet.css">
+
+
+</head>
+
+<body>
+
+  <header>
+    <div class="tete">
+      <img class="logobike" src="image/Illu-velo-1-300x300.png" alt="logobike">
+      <p class="slogan "> Location de vélo à Lyon </p>
+    </div>
+  </header>
+  <!-- SLIDER-->
+  <div id="diaporama">
+    <button id="bouttonGauche"><svg class="bi bi-caret-left" width="1em" height="1em" viewBox="0 0 16 16"
+        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd"
+          d="M10 12.796L4.519 8 10 3.204v9.592zm-.659.753l-5.48-4.796a1 1 0 010-1.506l5.48-4.796A1 1 0 0111 3.204v9.592a1 1 0 01-1.659.753z"
+          clip-rule="evenodd" />
+      </svg></button>
+    <button id="bouttonPause">
+      <svg class="bi bi-pause" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+        xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd"
+          d="M6 3.5a.5.5 0 01.5.5v8a.5.5 0 01-1 0V4a.5.5 0 01.5-.5zm4 0a.5.5 0 01.5.5v8a.5.5 0 01-1 0V4a.5.5 0 01.5-.5z"
+          clip-rule="evenodd" />
+      </svg>
+      <button id=bouttonPlay><svg class="bi bi-play" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+          xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd"
+            d="M10.804 8L5 4.633v6.734L10.804 8zm.792-.696a.802.802 0 010 1.392l-6.363 3.692C4.713 12.69 4 12.345 4 11.692V4.308c0-.653.713-.998 1.233-.696l6.363 3.692z"
+            clip-rule="evenodd" />
+        </svg></button>
+
+    </button>
+    <div id="caroussel">
+      <figure class="item">
+        <img src="image/google-maps-velo-3.jpg">
+        <figcaption> Choisissez votre station!</figcaption>
+      </figure>
+      <figure class="item">
+        <img src="image/o-bike-2662660_1280.jpg">
+        <figcaption>
+          Cliquez sur le bouton de réservation
+        </figcaption>
+      </figure>
+      <figure class="item">
+        <img src="image/transport-3168106_1280.jpg">
+        <figcaption>
+          Signez,validez et roulez!
+        </figcaption>
+      </figure>
+    </div>
+    <button id="bouttonDroit"><svg class="bi bi-caret-right" width="1em" height="1em" viewBox="0 0 16 16"
+        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd"
+          d="M6 12.796L11.481 8 6 3.204v9.592zm.659.753l5.48-4.796a1 1 0 000-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 001.659.753z"
+          clip-rule="evenodd" />
+      </svg></button>
+  </div>
+
+  <div id="map" class="map"></div>
+  <div id="marker" title="Marker"></div>
+
+  <footer>
+
+  </footer>
+
+  <!-- Fichier JS ------------------------------------------------------->
+
+  <script src="js/map.js"></script>
+  <script src="js/reservation.js"></script>
+  <script src="js/slider.js"></script>
+  <script src="js/signature.js"></script>
+
+</body>
