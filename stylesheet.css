@@ -1,0 +1,126 @@
+html {
+    width: 100%;
+}
+
+/* HEADER  & FOOTER -------------------------------------------------------------------*/
+
+header {
+    background-color: white;
+}
+
+.tete {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+}
+
+.logobike {
+    width: 20%;
+    height: 20%;
+}
+
+.slogan {
+    padding-right: 20px;
+    font-size: 30px;
+    font-family: 'Londrina Shadow', cursive;
+    color: #000000;
+}
+
+footer {
+    background-color: white;
+}
+
+/* CAROUSEL -------------------------------------------------------------------*/
+
+#diaporama {
+    position: relative;
+    width: 50%;
+    margin: 2% auto;
+    margin-bottom: 100px;
+}
+
+#caroussel {
+    position: relative;
+    height: 50vh;
+    /* VH permet d'avoir une meilleur visiblité sur tout support*/
+}
+
+#caroussel figure {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transition: all 2s;
+}
+
+#caroussel figure+figure {
+    opacity: 0;
+}
+
+#caroussel figure img {
+    width: 100%;
+    height: 100%;
+}
+
+#caroussel figcaption {
+    position: absolute;
+    left: 0;
+    right: 0;
+    background-color: rgb(233, 232, 227);
+    color: black;
+    font-size: 23px;
+    font-weight: 600;
+    text-align: center;
+    letter-spacing: 0.2em;
+    opacity: 0.79;
+    top: 10%;
+}
+
+#diaporama button {
+    position: absolute;
+    top: 110%;
+    z-index: 2;
+    border: none;
+    background-color: #2bcfec;
+    color: white;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+#bouttonDroit {
+    right: 25%;
+}
+
+#bouttonGauche {
+    left: 25%;
+}
+
+#bouttonPause {
+    right: 50%;
+}
+
+#bouttonPlay {
+    left: 50%;
+}
+
+/* CARTE ------------------------------------------------------------------------------------------------*/
+
+.map {
+    padding: 40px;
+    height: 400px;
+    width: 50%;
+  }
+
+  #marker {
+   
+    width: 30px;
+  height: 30px;
+  border-radius: 50% 50% 50% 0;
+  background: #00cae9;
+  transform: rotate(-45deg);
+  opacity: 0.5;
+    
+  }
+/* MAP -------------------------------------------------------------------*/
