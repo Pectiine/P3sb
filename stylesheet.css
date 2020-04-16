@@ -110,17 +110,7 @@ footer {
 .map {
     padding: 40px;
     height: 400px;
-    width: 50%;
+    width: 80%;
   }
 
-  #marker {
-   
-    width: 30px;
-  height: 30px;
-  border-radius: 50% 50% 50% 0;
-  background: #00cae9;
-  transform: rotate(-45deg);
-  opacity: 0.5;
-    
-  }
 /* MAP -------------------------------------------------------------------*/
