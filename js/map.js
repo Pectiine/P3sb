@@ -9,7 +9,7 @@ class Map {
       accessToken: 'pk.eyJ1Ijoid2lsbHBvbW1pZXMiLCJhIjoiY2p3ZzdtdGdiMDd0NDQ0bzJ3dnMyamo3diJ9.gZBoS6dOuthMKXF5Ptk5yw'
     }).addTo(this.mymap);
     this.url = apijcd
-    this.statusStation()
+    this.reservation()
     this.stationaff()
   }
 
@@ -54,7 +54,7 @@ class Map {
     })
   }
   //* Reservation ------------------------//
-  statusStation() {
+  reservation() {
     const bookingButton = document.getElementById("bouttonr")
     bookingButton.addEventListener("click", () => {
       let bikeCount = document.getElementById("velodispo").textContent
