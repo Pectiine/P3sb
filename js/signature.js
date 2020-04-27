@@ -1,6 +1,6 @@
 
 class Drawer {
-    constructor(id) {
+    constructor() {
         this.canvas = document.getElementById("canvas")
         this.ctx = canvas.getContext("2d")
         this.drawing = false
