@@ -1,3 +1,4 @@
+
 class Map {
   constructor(apijcd) {
     this.mymap = L.map('mapid').setView([45.750000, 4.850000], 11);
@@ -14,27 +15,23 @@ class Map {
   }
 
   stationaff() {
+
     ajaxGet(this.url, (reponse) => {
       let results = JSON.parse(reponse);
       for (let i = 0; i < results.length; i++) {
         const station = results[i];
-        const marker = L.marker([station.position.lat, station.position.lng])
+        const marker =
+        L.marker([station.position.lat, station.position.lng], { icon: this.getMarkerColor(station) })
         marker.options.station = station
         marker.addTo(this.mymap)
           .bindPopup("<b>" + station.name + "</b><br>" + station.available_bikes + " vélos disponinbles");
         marker.addEventListener('click', () => {
           const context = canvas.getContext("2d")
           context.clearRect(0, 0, canvas.width, canvas.height)
-
           if (document.getElementById("info").style.display == "none") {
             document.getElementById("info").style.display = "initial"
           }
-          let status
-          if (station.status == "OPEN") {
-            status = "Ouverte"
-          } else if (station.status == "CLOSED") {
-            status = "Fermée"
-          }
+          const status = station.status === "OPEN" ? "Ouverte" : "Fermée";
           let stationNameField = document.getElementById("stationName")
           let adresseField = document.getElementById("adress")
           let nbrePlacesField = document.getElementById("number")
@@ -47,12 +44,43 @@ class Map {
           stationStatusField.textContent = status
           const bookingButton = document.getElementById("bouttonr")
           bookingButton.style.display = "initial"
-
         })
 
       }
     })
   }
+
+// Méthode pour ajouter des markers de couleurs selon le status de la station 
+
+  getMarkerColor(station) {
+
+    let colorMarker = 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png';
+    let pinSize = [25, 41];
+    if (station.available_bikes > 7) {
+      colorMarker = 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png';
+    }
+    if (station.available_bikes >= 1 && station.available_bikes <= 6) {
+      colorMarker = 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-orange.png';
+    }
+    if (station.available_bikes === 0) {
+      colorMarker = 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png';
+    }
+    if (station.status != "OPEN") {
+      colorMarker = 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png';
+    }
+    if (station.status === "CLOSED") {
+      colorMarker = 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-black.png';
+    }
+    return new L.Icon({
+      iconUrl: colorMarker,
+      iconSize: pinSize,
+      iconAnchor: [12, 41],
+      popupAnchor: [1, -34],
+      shadowSize: [41, 41]
+    });
+  }
+
+
   //* Reservation ------------------------//
   reservation() {
     const bookingButton = document.getElementById("bouttonr")
@@ -61,7 +89,7 @@ class Map {
       let stationStatus = document.getElementById("stationd").textContent
       if (bikeCount <= 0) {
         alert("Aucun vélo n'est disponible")
-      } else if (stationStatus == "Fermée") {
+      } else if (stationStatus === "Fermée") {
         alert("Cette station est fermée pour le moment")
       } else {
 
@@ -69,7 +97,7 @@ class Map {
         document.getElementById("reservation").style.display = "initial"
 
         let autoCompName = document.getElementById("inputName")
-        let autoCompFirstname = document.getElementById("inputFirstname")
+        let autoCompFirstname = document.getElementById("inputFirst")
 
         if (localStorage) {
           autoCompName.value = localStorage.getItem("nom")
@@ -82,16 +110,16 @@ class Map {
         const bookingStepTwo = document.getElementById("bouttonnext");
         bookingStepTwo.addEventListener("click", () => {
 
-          if (autoCompName.value == "" && autoCompFirstname.value == "") {
+          if (autoCompName.value === "" && autoCompFirstname.value == "") {
             alert("Merci de tout remplir")
-          } else if (autoCompName.value == "" || autoCompFirstname.value == "") {
+          } else if (autoCompName.value === "" || autoCompFirstname.value == "") {
             alert("Il semblerait que vous ayez oublié de renseigner un champ")
           } else {
             let userNameField = document.getElementById("inputName").value
             let userFirstnameField = document.getElementById("inputFirst").value
             localStorage.setItem("nom", userNameField)
             localStorage.setItem("prenom", userFirstnameField)
-            document.getElementById("canvasB").style.display = "initial"
+            document.getElementById("canvas").style.display = "initial"
             document.getElementById("reservation").style.display = "none"
             document.getElementById("bouttonf").style.display = "initial"
             document.getElementById("canvas").scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
@@ -106,7 +134,7 @@ class Map {
 const map = new Map("https://api.jcdecaux.com/vls/v1/stations?contract=Lyon&apiKey=44a335861424c22e4558325525e53e6809010578")
 
 function ajaxGet(url, callback) {
-  let req = new XMLHttpRequest()
+  const req = new XMLHttpRequest()
   req.open("GET", url)
   req.addEventListener("load", function () {
     if (req.status >= 200 && req.status < 400) {
@@ -120,3 +148,4 @@ function ajaxGet(url, callback) {
   })
   req.send(null)
 }
+
