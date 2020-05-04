@@ -156,3 +156,76 @@ button {
     padding: 6px 0 6px 0;
 }
 
+#bouttonr {
+    display: none;
+}
+
+#reservation {
+    display: none;
+    padding: 5%;
+    text-align: center;
+}
+
+
+
+input {
+    border-radius: 2px;
+}
+
+#finalRe {
+    display: flex;
+    justify-content: center;
+    margin: 70px -8px;
+}
+
+#canvasB {
+    height: 100%;
+    padding: 5%;
+    display: block;
+    text-align: center;
+}
+
+#canvas {
+    text-align: center;
+    margin-left: 45%;
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    justify-self: center;
+    min-width: auto;
+    min-height: auto;
+    max-width: 300px;
+    max-height: 300px;
+    border: 3px solid grey;
+    background-color: white;
+    border-radius: 15px;
+    margin: 15px;
+    display: none;
+}
+
+#bouttonf {
+    display: none !important;
+    margin-left: 35px;
+}
+
+#timerR {
+    display: none;
+}
+
+#time {
+    margin: 20px;
+}
+
+#panel {
+    padding: 10px;
+    width: 45%;
+    text-align: center;
+    border-radius: 10px;
+}
+
+#annuler {
+    align-items: center;
+    border-radius: 0 0 12px 12px;
+}
+

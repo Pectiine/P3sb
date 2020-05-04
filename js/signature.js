@@ -81,4 +81,4 @@ class Drawer {
 
 }
 
-const drawer = new Drawer("canvas")
+const drawer = new Drawer

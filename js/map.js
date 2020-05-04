@@ -15,8 +15,7 @@ class Map {
   }
 
   stationaff() {
-
-    ajaxGet(this.url, (reponse) => {
+ajaxGet(this.url, (reponse) => {
       let results = JSON.parse(reponse);
       for (let i = 0; i < results.length; i++) {
         const station = results[i];
@@ -32,11 +31,11 @@ class Map {
             document.getElementById("info").style.display = "initial"
           }
           const status = station.status === "OPEN" ? "Ouverte" : "Fermée";
-          let stationNameField = document.getElementById("stationName")
-          let adresseField = document.getElementById("adress")
-          let nbrePlacesField = document.getElementById("number")
-          let nbreVelosField = document.getElementById("velodispo")
-          let stationStatusField = document.getElementById("stationd")
+          const stationNameField = document.getElementById("stationName")
+          const adresseField = document.getElementById("adress")
+          const nbrePlacesField = document.getElementById("number")
+          const nbreVelosField = document.getElementById("velodispo")
+          const stationStatusField = document.getElementById("stationd")
           stationNameField.textContent = station.name
           adresseField.textContent = station.address
           nbrePlacesField.textContent = station.available_bike_stands
@@ -65,7 +64,7 @@ class Map {
     if (station.available_bikes === 0) {
       colorMarker = 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png';
     }
-    if (station.status != "OPEN") {
+    if (station.status !== "OPEN") {
       colorMarker = 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png';
     }
     if (station.status === "CLOSED") {
@@ -77,7 +76,7 @@ class Map {
       iconAnchor: [12, 41],
       popupAnchor: [1, -34],
       shadowSize: [41, 41]
-    });
+    });s
   }
 
 
@@ -85,8 +84,8 @@ class Map {
   reservation() {
     const bookingButton = document.getElementById("bouttonr")
     bookingButton.addEventListener("click", () => {
-      let bikeCount = document.getElementById("velodispo").textContent
-      let stationStatus = document.getElementById("stationd").textContent
+     const bikeCount = document.getElementById("velodispo").textContent
+      const stationStatus = document.getElementById("stationd").textContent
       if (bikeCount <= 0) {
         alert("Aucun vélo n'est disponible")
       } else if (stationStatus === "Fermée") {
@@ -133,7 +132,7 @@ class Map {
 // APIkey JCDECAUX  
 const map = new Map("https://api.jcdecaux.com/vls/v1/stations?contract=Lyon&apiKey=44a335861424c22e4558325525e53e6809010578")
 
-function ajaxGet(url, callback) {
+ function ajaxGet  (url, callback) {
   const req = new XMLHttpRequest()
   req.open("GET", url)
   req.addEventListener("load", function () {
