@@ -1,4 +1,3 @@
-
 class Map {
   constructor(apijcd) {
     this.mymap = L.map('mapid').setView([45.750000, 4.850000], 11);
@@ -13,9 +12,9 @@ class Map {
     this.reservation()
     this.stationaff()
   }
-
+  //* Récuperons les données de l'api */
   stationaff() {
-ajaxGet(this.url, (reponse) => {
+    this.ajaxGet(this.url, (reponse) => {
       let results = JSON.parse(reponse);
       for (let i = 0; i < results.length; i++) {
         const station = results[i];
@@ -24,12 +23,14 @@ ajaxGet(this.url, (reponse) => {
         marker.options.station = station
         marker.addTo(this.mymap)
           .bindPopup("<b>" + station.name + "</b><br>" + station.available_bikes + " vélos disponinbles");
-        marker.addEventListener('click', () => {
+         marker.addEventListener('click', () => {
           const context = canvas.getContext("2d")
           context.clearRect(0, 0, canvas.width, canvas.height)
           if (document.getElementById("info").style.display == "none") {
             document.getElementById("info").style.display = "initial"
           }
+
+              //Affichage des infos stations
           const status = station.status === "OPEN" ? "Ouverte" : "Fermée";
           const stationNameField = document.getElementById("stationName")
           const adresseField = document.getElementById("adress")
@@ -41,6 +42,7 @@ ajaxGet(this.url, (reponse) => {
           nbrePlacesField.textContent = station.available_bike_stands
           nbreVelosField.textContent = station.available_bikes
           stationStatusField.textContent = status
+           //Bouton reserver   
           const bookingButton = document.getElementById("bouttonr")
           bookingButton.style.display = "initial"
         })
@@ -48,6 +50,22 @@ ajaxGet(this.url, (reponse) => {
       }
     })
   }
+
+ ajaxGet (url, callback) {
+  const req = new XMLHttpRequest()
+  req.open("GET", url)
+  req.addEventListener("load", function () {
+    if (req.status >= 200 && req.status < 400) {
+      callback(req.responseText)
+    } else {
+      console.error(req.status + " " + req.statusText + " " + url)
+    }
+  })
+  req.addEventListener("error", function () {
+    console.error("Erreur réseau avec l'URL " + url)
+  })
+  req.send(null)
+}
 
 // Méthode pour ajouter des markers de couleurs selon le status de la station 
 
@@ -118,7 +136,7 @@ ajaxGet(this.url, (reponse) => {
             let userFirstnameField = document.getElementById("inputFirst").value
             localStorage.setItem("nom", userNameField)
             localStorage.setItem("prenom", userFirstnameField)
-            document.getElementById("canvas").style.display = "initial"
+            document.getElementById("canvasB").style.display = "initial"
             document.getElementById("reservation").style.display = "none"
             document.getElementById("bouttonf").style.display = "initial"
             document.getElementById("canvas").scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
@@ -127,24 +145,14 @@ ajaxGet(this.url, (reponse) => {
       }
     })
   }
+
+
 }
+
 
 // APIkey JCDECAUX  
 const map = new Map("https://api.jcdecaux.com/vls/v1/stations?contract=Lyon&apiKey=44a335861424c22e4558325525e53e6809010578")
 
- function ajaxGet  (url, callback) {
-  const req = new XMLHttpRequest()
-  req.open("GET", url)
-  req.addEventListener("load", function () {
-    if (req.status >= 200 && req.status < 400) {
-      callback(req.responseText)
-    } else {
-      console.error(req.status + " " + req.statusText + " " + url)
-    }
-  })
-  req.addEventListener("error", function () {
-    console.error("Erreur réseau avec l'URL " + url)
-  })
-  req.send(null)
-}
+
+
 

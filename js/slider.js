@@ -4,7 +4,6 @@ class Diaporama {
     imageNum = 0;
     playing = false;
 
-
     constructor() {
         document.getElementById("bouttonDroit").addEventListener("click", () => this.suivant());
         document.getElementById("bouttonGauche").addEventListener("click", () => this.precedent());

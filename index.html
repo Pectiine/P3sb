@@ -5,7 +5,8 @@
   <link rel="stylesheet" href="stylesheet.css">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link href="https://fonts.googleapis.com/css?family=Bangers|Barrio|Fira+Sans&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Alike&family=Archivo+Narrow&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Modak&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
     integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
     crossorigin="" />
@@ -18,7 +19,7 @@
 <body>
   <header>
     <div class="tete">
-      <img class="logobike" src="image/Illu-velo-1-300x300.png" alt="logobike">
+      <img class="logobike" src="image/bike-158294_640 (2).png" alt="logobike">
       <p class="slogan "> Location de vélo Lyon </p>
     </div>
   </header>
@@ -47,19 +48,21 @@
     </button>
     <div id="caroussel">
       <figure class="item">
-        <img src="image/google-maps-velo-3.jpg">
-        <figcaption> Choisissez votre station!</figcaption>
+        <img src="image/Capture d’écran (25).png">
+        <figcaption> 1: Choisissez votre station</figcaption>
       </figure>
       <figure class="item">
-        <img src="image/o-bike-2662660_1280.jpg">
+        <img src="image/Capture d’écran (24).png">
         <figcaption>
-          Cliquez sur le bouton de réservation
+          2: Cliquez sur le bouton de réservation, <br> 
+          rentrez votre prénom et nom
         </figcaption>
       </figure>
       <figure class="item">
-        <img src="image/transport-3168106_1280.jpg">
+        <img src="image/Capture d’écran (37).png">
         <figcaption>
-          Signez,validez et roulez!
+         3: Signez,validez et roulez <br>
+         
         </figcaption>
       </figure>
     </div>
@@ -92,32 +95,44 @@
               <label id="indicPrenom">Votre Prenom </label><br />
               <input type="text" id="inputFirst" /><br />
             </div><br />
-            <button id="bouttonnext">Suivant</button>
+            <button id="bouttonnext">Signer</button>
         </div>
       </div>
-    </div>
+    
     <div id="finalRe"> 
-      <div id="panel"> 
-      <div id="canvasB">
-        <h3 id="indicsi">Signature</h3>
-        <canvas id="canvas"></canvas><br />
-        <button id="bouttonf"> Confirmé! </button>
+    <div id="panel"> 
+      <div id="canvasB">    
+        <h3> Une petite signature</h3>
+      <svg class="bi bi-pencil-square" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+        xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M15.502 1.94a.5.5 0 010 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 01.707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 00-.121.196l-.805 2.414a.25.25 0 00.316.316l2.414-.805a.5.5 0 00.196-.12l6.813-6.814z" />
+        <path fill-rule="evenodd"
+          d="M1 13.5A1.5 1.5 0 002.5 15h11a1.5 1.5 0 001.5-1.5v-6a.5.5 0 00-1 0v6a.5.5 0 01-.5.5h-11a.5.5 0 01-.5-.5v-11a.5.5 0 01.5-.5H9a.5.5 0 000-1H2.5A1.5 1.5 0 001 2.5v11z"
+          clip-rule="evenodd" />
+      </svg>
+  
+        <canvas id="canvas"> </canvas><br />
+        <button id="bouttonf"> Confirmer </button>
       </div>
-      <div id="timerR">
+    
+     </div>
+     </div>
+   
+    </div> <div id="timerR">
       <h3 id="indict">Réservation en cours</h3>
       <div id="time"></div>
       <button id="annuler">Annuler</button>
-      </div>
-     </div>
-     </div>
-    </div>
+  </div>
+  </div>
  </div>
-  <footer></footer>
+ 
   <!-- Fichier JS ------------------------------------------------------->
   <script src="js/map.js"></script>
   <script src="js/reservation.js"></script>
   <script src="js/slider.js"></script>
   <script src="js/signature.js"></script>
-</body>
 
+
+</body>
 </html>

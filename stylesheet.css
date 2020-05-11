@@ -1,11 +1,13 @@
 html {
     width: 100%;
+    font-family: 'Alike', serif;
+    height: 100vh;
 }
 
 /* HEADER  & FOOTER -------------------------------------------------------------------*/
 
 header {
-    background-color: white;
+    background-color: #00ff9d;
 }
 
 .tete {
@@ -18,19 +20,18 @@ header {
 .logobike {
     width: 10%;
     height: 10%;
+    padding: 10px;
 }
 
 .slogan {
     padding-right: 20px;
     font-size: 30px;
-    font-family: 'Bangers', cursive;
-    color: #999999;
-    ;
+    color: #ffffff;
+    font-family: 'Modak', cursive;
+    letter-spacing: 3px;
 }
 
-footer {
-    background-color: white;
-}
+
 
 /* CAROUSEL -------------------------------------------------------------------*/
 
@@ -66,15 +67,15 @@ footer {
 
 #caroussel figcaption {
     position: absolute;
-    left: 0;
-    right: 0;
-    background-color: #facc00;
+    height: auto;
+    right: 2%;
+    border-radius: 10px;
+    background-color: #00ff9d;
     color: white;
     font-size: 22px;
-    font-family: 'Bangers', cursive;
     font-weight: 600;
     text-align: center;
-    top: 10%;
+    top: 2%;
     padding: 20px;
     letter-spacing: 3px;
 }
@@ -84,7 +85,7 @@ footer {
     top: 110%;
     z-index: 2;
     border: none;
-    background-color: #414141;
+    background-color: black;
     color: white;
     height: 40px;
     width: 40px;
@@ -118,20 +119,19 @@ footer {
 }
 
 #mapid {
-    height: 550px;
+    height: 650px;
     width: 65%;
     justify-content: center;
+    margin-bottom: 20px;
 }
 
 #form {
-    height: 550px;
+    height: 650px;
     width: 30%;
     justify-content: space-around;
-    background-color: white;
-    border-radius: 8%;
     margin-left: 2%;
-    box-shadow: 5px 5px 5px 5px #c9c6c6;
-    font-family: 'Fira Sans', sans-serif;
+    border-radius: 10px;
+  
 }
 
 #info {
@@ -141,19 +141,22 @@ footer {
 }
 
 #formF {
-    text-align: center;
-    justify-content: center;
-    padding-top: 15%;
-    font-family: 'Fira Sans', sans-serif;
+    border: none;
+    border-radius: 4px;
+    font-size: 15px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 button {
-    border-radius: 12px 0 12px 0;
-    background: #facc00;
+    width: 85px;
+    height: 85px;
+    background: #00ff9d;
+    border-radius: 50%;
     border: none;
     color: #fff;
-    font: bold 12px Verdana;
-    padding: 6px 0 6px 0;
+    align-items: center;
+    font-size: 15px;
 }
 
 #bouttonr {
@@ -166,23 +169,19 @@ button {
     text-align: center;
 }
 
-
-
 input {
-    border-radius: 2px;
+    height: 30px;
 }
 
 #finalRe {
     display: flex;
     justify-content: center;
-    margin: 70px -8px;
 }
 
 #canvasB {
-    height: 100%;
-    padding: 5%;
     display: block;
     text-align: center;
+    display: none;
 }
 
 #canvas {
@@ -195,22 +194,25 @@ input {
     justify-self: center;
     min-width: auto;
     min-height: auto;
-    max-width: 300px;
-    max-height: 300px;
+    max-width: 200px;
+    max-height: 200px;
     border: 3px solid grey;
     background-color: white;
     border-radius: 15px;
-    margin: 15px;
-    display: none;
 }
 
 #bouttonf {
     display: none !important;
-    margin-left: 35px;
 }
 
 #timerR {
     display: none;
+    text-align: center;
+    border-radius: 10px;
+    background-color: #00ff9d;
+    color: white;
+    margin-bottom: auto;
+    width: 65%;
 }
 
 #time {
@@ -218,14 +220,6 @@ input {
 }
 
 #panel {
-    padding: 10px;
-    width: 45%;
     text-align: center;
     border-radius: 10px;
 }
-
-#annuler {
-    align-items: center;
-    border-radius: 0 0 12px 12px;
-}
-

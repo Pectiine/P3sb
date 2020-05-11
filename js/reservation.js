@@ -6,9 +6,10 @@ class Timer {
         if (oldStartRaw) {
             this.startDate = parseInt(oldStartRaw)
         }
+      document.getElementById("bouttonf").addEventListener("click", this.finaleR)
+      document.getElementById("annuler") .addEventListener("click", this.cancel)
+      window.addEventListener("load", this.onLoad)
     }
-
-     
     getRemainingTime() {
         const now = new Date()
         const nowTime = now.getTime()
@@ -38,13 +39,13 @@ class Timer {
                 sessionStorage.removeItem("bikes")
                 document.getElementById("panel").style.border = "0px"
             }
-            this.render(remainingTime)
+            this.renderT(remainingTime)
         }
         updateTime()
         this.interval = setInterval(updateTime, 1000)
     }
 
-    render(remainingTime) {
+    renderT(remainingTime) {
 
         let minutes = Math.floor(remainingTime / 60000);
         let seconds = Math.floor((remainingTime % 60000) / 1000).toFixed(0);
@@ -59,10 +60,9 @@ class Timer {
             this.el.textContent = "Vous avez réservé un vélo sur la station " + sessionStorage.getItem("currentStation") + " - " + seconds + "s restantes avant expiration de la réservation"
         }
     }
-}
-let timer = new Timer("time", 1200000)
-
-function finalePhase() {
+    
+    // Finaliser la reservation
+    finaleR() {
     sessionStorage.removeItem("startDate")
     clearInterval(timer.interval)
     clearInterval(timer.updateTime)
@@ -78,9 +78,11 @@ function finalePhase() {
     document.getElementById("canvasB").style.display = "none"
     timer.getRemainingTime()
     timer.run()
-}
 
-function cancel() {
+} 
+
+// annulation 
+cancel() {
     if (sessionStorage.getItem("startDate") > 1) {
         clearInterval(timer.interval)
         clearInterval(timer.updateTime)
@@ -90,10 +92,11 @@ function cancel() {
         sessionStorage.removeItem("bikes")
         document.getElementById("timerR").style.display = "none"
         document.getElementById("panel").style.border = "0px"
-    }
+}  
 }
 
-function onLoad() {
+// rappel de le réservation fenêtre d'alerte
+ onLoad() {
     if (sessionStorage.getItem("startDate")) {
         alert("vous avez une réservation en cours à la station " + sessionStorage.getItem("currentStation"))
         document.getElementById("timerR").style.display = "initial"
@@ -103,10 +106,9 @@ function onLoad() {
     }
 }
 
-const goButton = document.getElementById("bouttonf")
-goButton.addEventListener("click", finalePhase)
+}
 
-const cancelButton = document.getElementById("annuler")
-cancelButton.addEventListener("click", cancel)
+let timer = new Timer("time", 1200000)
 
-window.addEventListener("load", onLoad)
+
+
