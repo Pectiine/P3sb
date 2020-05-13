@@ -1,4 +1,6 @@
-P3 Openclassrooms
+P3 Openclassrooms formation dev junior. 
+
+Création d'un appli de réservation de vélo em javascript uniquement la partie front end, ainsi qu'un support de présentation type powerpoint.
 
 Vous devez développer une application simulant la réservation de vélos (Vélo'v) dans Lyon. Ces vélos sont répartis dans de nombreuses stations dans la ville. L'utilisateur doit pouvoir en réserver un depuis son navigateur (à condition qu'il reste des vélos disponibles à la station !). La réservation sera temporairement enregistrée sur le navigateur du visiteur.
 
