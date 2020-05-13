@@ -9,7 +9,7 @@ class Diaporama {
         document.getElementById("bouttonGauche").addEventListener("click", () => this.precedent());
         document.getElementById("bouttonPause").addEventListener("click", () => this.pause());
         document.getElementById("bouttonPlay").addEventListener("click", () => this.play());
-       document.addEventListener("keydown", () => this.clavier(event));
+        document.addEventListener("keydown", () => this.clavier(event));
     }
     auto = setInterval(() => this.suivant(), 5000);
 
@@ -41,21 +41,20 @@ class Diaporama {
     play = () => {
         this.playing = true;
         this.auto = setInterval(() => {
-           this.suivant()
+            this.suivant()
         }, 5000)
     }
 
     // Fonction clavier 
     clavier = (e) => {
-   
+
         if (e.keyCode === 39) {
             document.addEventListener("keydown", this.suivant());
-          
+
         } else if (e.keyCode === 37) {
             document.addEventListener("keydown", this.precedent());
-            
+
         }
     }
 }
 
-const diapo = new Diaporama();
