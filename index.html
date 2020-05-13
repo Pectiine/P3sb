@@ -1,26 +1,28 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title> location de vélo LYON</title>
   <link rel="stylesheet" href="stylesheet.css">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="https://fonts.googleapis.com/css2?family=Alike&family=Archivo+Narrow&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Modak&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Alike&family=Archivo+Narrow&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Fredoka+One&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
     integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
     crossorigin="" />
+  <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
     integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
     crossorigin=""></script>
 
 
 </head>
+
 <body>
   <header>
     <div class="tete">
-      <img class="logobike" src="image/bike-158294_640 (2).png" alt="logobike">
-      <p class="slogan "> Location de vélo Lyon </p>
+      <p class="slogan "> Vélo' <span id="L"> Lyon</span></p>
     </div>
   </header>
   <!-- SLIDER-->
@@ -48,21 +50,21 @@
     </button>
     <div id="caroussel">
       <figure class="item">
-        <img src="image/Capture d’écran (25).png">
+        <img src="image/Velov1.gif">
         <figcaption> 1: Choisissez votre station</figcaption>
       </figure>
       <figure class="item">
-        <img src="image/Capture d’écran (24).png">
+        <img src="image/Velov1.gif">
         <figcaption>
-          2: Cliquez sur le bouton de réservation, <br> 
+          2: Cliquez sur le bouton de réservation, <br>
           rentrez votre prénom et nom
         </figcaption>
       </figure>
       <figure class="item">
-        <img src="image/Capture d’écran (37).png">
+        <img src="image/Velov1.gif">
         <figcaption>
-         3: Signez,validez et roulez <br>
-         
+          3: Signez,validez et roulez <br>
+
         </figcaption>
       </figure>
     </div>
@@ -72,6 +74,27 @@
           d="M6 12.796L11.481 8 6 3.204v9.592zm.659.753l5.48-4.796a1 1 0 000-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 001.659.753z"
           clip-rule="evenodd" />
       </svg></button>
+  </div>
+
+  <div id="infoM">
+    <div id="containerI">
+      <figure>
+        <img src="image/marker-icon-2x-green.png" alt="open">
+        <p>Ouverte</p>
+      </figure>
+      <figure>
+        <img src="image/marker-icon-2x-orange.png">
+        <p>Moins de 7 vélos</p>
+      </figure>
+      <figure>
+        <img src="image/marker-icon-2x-red.png" alt="">
+        <p> Pas de vélo disponible </p>
+      </figure>
+      <figure>
+        <img src="image/marker-icon-2x-black.png" alt="">
+        <p>Fermée</p>
+      </figure>
+    </div>
   </div>
   <div id="container">
     <div class="map-container">
@@ -96,43 +119,46 @@
               <input type="text" id="inputFirst" /><br />
             </div><br />
             <button id="bouttonnext">Signer</button>
+          </div>
         </div>
+
+        <div id="finalRe">
+          <div id="panel">
+            <div id="canvasB">
+              <h3> Une petite signature</h3>
+              <svg class="bi bi-pencil-square" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M15.502 1.94a.5.5 0 010 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 01.707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 00-.121.196l-.805 2.414a.25.25 0 00.316.316l2.414-.805a.5.5 0 00.196-.12l6.813-6.814z" />
+                <path fill-rule="evenodd"
+                  d="M1 13.5A1.5 1.5 0 002.5 15h11a1.5 1.5 0 001.5-1.5v-6a.5.5 0 00-1 0v6a.5.5 0 01-.5.5h-11a.5.5 0 01-.5-.5v-11a.5.5 0 01.5-.5H9a.5.5 0 000-1H2.5A1.5 1.5 0 001 2.5v11z"
+                  clip-rule="evenodd" />
+              </svg>
+
+              <canvas id="canvas"> </canvas><br />
+              <button id="bouttonf"> Confirmer </button>
+            </div>
+
+          </div>
+        </div>
+
       </div>
-    
-    <div id="finalRe"> 
-    <div id="panel"> 
-      <div id="canvasB">    
-        <h3> Une petite signature</h3>
-      <svg class="bi bi-pencil-square" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
-        xmlns="http://www.w3.org/2000/svg">
-        <path
-          d="M15.502 1.94a.5.5 0 010 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 01.707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 00-.121.196l-.805 2.414a.25.25 0 00.316.316l2.414-.805a.5.5 0 00.196-.12l6.813-6.814z" />
-        <path fill-rule="evenodd"
-          d="M1 13.5A1.5 1.5 0 002.5 15h11a1.5 1.5 0 001.5-1.5v-6a.5.5 0 00-1 0v6a.5.5 0 01-.5.5h-11a.5.5 0 01-.5-.5v-11a.5.5 0 01.5-.5H9a.5.5 0 000-1H2.5A1.5 1.5 0 001 2.5v11z"
-          clip-rule="evenodd" />
-      </svg>
-  
-        <canvas id="canvas"> </canvas><br />
-        <button id="bouttonf"> Confirmer </button>
+      <div id="timerR">
+        <h3 id="indict">Réservation en cours</h3>
+        <div id="time"></div>
+        <button id="annuler">Annuler</button>
       </div>
-    
-     </div>
-     </div>
-   
-    </div> <div id="timerR">
-      <h3 id="indict">Réservation en cours</h3>
-      <div id="time"></div>
-      <button id="annuler">Annuler</button>
+    </div>
   </div>
-  </div>
- </div>
- 
+
   <!-- Fichier JS ------------------------------------------------------->
   <script src="js/map.js"></script>
-  <script src="js/reservation.js"></script>
+  <script src="js/timer.js"></script>
   <script src="js/slider.js"></script>
   <script src="js/signature.js"></script>
+  <script src="js/main.js"></script>
 
 
 </body>
+
 </html>

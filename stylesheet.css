@@ -1,37 +1,32 @@
 html {
     width: 100%;
-    font-family: 'Alike', serif;
+    font-family: 'Fredoka One', cursive;
     height: 100vh;
 }
 
 /* HEADER  & FOOTER -------------------------------------------------------------------*/
 
 header {
-    background-color: #00ff9d;
+    background-color: white;
+    box-shadow: 0px 8px 20px #aaa;
+    height: 120px;
 }
 
 .tete {
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    padding: 5px;
-}
-
-.logobike {
-    width: 10%;
-    height: 10%;
-    padding: 10px;
 }
 
 .slogan {
-    padding-right: 20px;
-    font-size: 30px;
-    color: #ffffff;
-    font-family: 'Modak', cursive;
-    letter-spacing: 3px;
+    font-family: 'Fredoka One', cursive;
+    font-size: 50px;
+    margin-right: 700px;
 }
 
-
+#L {
+    color: red;
+}
 
 /* CAROUSEL -------------------------------------------------------------------*/
 
@@ -39,7 +34,7 @@ header {
     position: relative;
     width: 50%;
     margin: 2% auto;
-    margin-bottom: 100px;
+    margin-bottom: 150px;
 }
 
 /* VH permet d'avoir une meilleur visiblité sur tout support*/
@@ -70,8 +65,8 @@ header {
     height: auto;
     right: 2%;
     border-radius: 10px;
-    background-color: #00ff9d;
-    color: white;
+    background-color: white;
+    color: black;
     font-size: 22px;
     font-weight: 600;
     text-align: center;
@@ -109,6 +104,23 @@ header {
     left: 50%;
 }
 
+/* info ---------------------------------------------------------------*/
+
+#containerI {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    justify-content: center;
+    text-align: center;
+  padding: auto;
+  
+}
+
+#containerI img {
+    height: 39px;
+  
+}
+
 /* CARTE ET FORMULAIRE ------------------------------------------------------------------------------------------------*/
 
 .map-container {
@@ -116,6 +128,7 @@ header {
     height: 600px;
     display: flex;
     flex-wrap: wrap;
+    
 }
 
 #mapid {
@@ -131,7 +144,8 @@ header {
     justify-content: space-around;
     margin-left: 2%;
     border-radius: 10px;
-  
+    box-shadow: 0px 8px 20px #aaa;
+    background-color: white;
 }
 
 #info {
@@ -151,7 +165,7 @@ header {
 button {
     width: 85px;
     height: 85px;
-    background: #00ff9d;
+    background: red;
     border-radius: 50%;
     border: none;
     color: #fff;
@@ -209,8 +223,6 @@ input {
     display: none;
     text-align: center;
     border-radius: 10px;
-    background-color: #00ff9d;
-    color: white;
     margin-bottom: auto;
     width: 65%;
 }
@@ -222,4 +234,12 @@ input {
 #panel {
     text-align: center;
     border-radius: 10px;
+}
+
+/* MEDIA QUIERIES */
+
+@media screen and (max-width: 980px) {
+    .slogan {
+        margin-right: 0px;
+    }
 }
