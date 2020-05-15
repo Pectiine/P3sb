@@ -7,7 +7,7 @@ Création d'un appli de réservation de vélo uniquement la partie front end, ai
 * css
 * javascript orienté objet 
 
-## cahier des charges
+## Cahier des charges
 
 
 * Un diaporama explicatif est également présent 
@@ -23,3 +23,4 @@ Il suffit de séléctioner une station, et de faire la réservation. Pour termin
 La réservation est affichée en bas de page avec une limite de *20 minutes*. 
 
 Le canvas "*signature*" a également été rédigé en HTML/JAVASCRIPT sans plugin. 
+
