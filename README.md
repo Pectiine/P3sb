@@ -16,11 +16,12 @@ Création d'un appli de réservation de vélo uniquement la partie front end, ai
 * Il est possible de faire une nouvelle réservation et écraser l'ancienne 
 * Le code doit exploiter les API JCDecaux. 
 * La réservation expire automatiquement au bout de 20 minutes et également lorsque le navigateur web se referme. 
+Le canvas "*signature*" a également été rédigé en HTML/JAVASCRIPT sans plugin. 
 
 ## Utilisation de l'application 
 
 Il suffit de séléctioner une station, et de faire la réservation. Pour terminer il faut une signature. 
 La réservation est affichée en bas de page avec une limite de *20 minutes*. 
 
-Le canvas "*signature*" a également été rédigé en HTML/JAVASCRIPT sans plugin. 
+
 
