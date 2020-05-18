@@ -1,4 +1,3 @@
-
 class CanvasD {
     constructor() {
         this.canvas = document.getElementById("canvas")
@@ -17,7 +16,6 @@ class CanvasD {
         this.canvas.addEventListener("touchmove", (e) => this.dessinTactile(e));
         this.canvas.addEventListener("touchend", (e) => this.finDessinTactile(e));
     }
-
     dessinC() {
         if (this.dessins === true) {
             this.ctx.moveTo(this.lastPos.x, this.lastPos.y)
@@ -27,38 +25,27 @@ class CanvasD {
             this.ctx.beginPath()
         }
     }
-
-
     // le bouton confirmé apparaît que si il y'a un dessin
     debutDessin() {
-
         this.dessins = true
-
         document.getElementById("bouttonf").setAttribute("style", "display : initial !important")
     }
-
     debutDessinTactile(e) {
-
         this.lastPos.x = e.touches[0].clientX - this.canvas.getBoundingClientRect().left
         this.lastPos.y = e.touches[0].clientY - this.canvas.getBoundingClientRect().top
         this.dessins = true
-
         e.preventDefault()
     }
-
-
+    // dessins tactile
     dessin(e) {
-        // dessins tactile
         this.mousePos.x = e.clientX - this.canvas.getBoundingClientRect().left
         this.mousePos.y = e.clientY - this.canvas.getBoundingClientRect().top
         this.dessinC()
         this.lastPos.x = e.clientX - this.canvas.getBoundingClientRect().left
         this.lastPos.y = e.clientY - this.canvas.getBoundingClientRect().top
     }
-
     // dessins tactile
     dessinTactile(e) {
-
         this.dessins = true
         this.mousePos.x = e.touches[0].clientX - this.canvas.getBoundingClientRect().left
         this.mousePos.y = e.touches[0].clientY - this.canvas.getBoundingClientRect().top
@@ -66,7 +53,6 @@ class CanvasD {
         this.lastPos.x = e.touches[0].clientX - this.canvas.getBoundingClientRect().left
         this.lastPos.y = e.touches[0].clientY - this.canvas.getBoundingClientRect().top
         e.preventDefault()
-
         document.getElementById("bouttonf").setAttribute("style", "display : initial !important")
     }
     // fin du dessin
@@ -78,5 +64,4 @@ class CanvasD {
         this.dessins = false
         e.preventDefault()
     }
-
 }

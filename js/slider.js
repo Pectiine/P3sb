@@ -1,9 +1,7 @@
-// Slider
 class Diaporama {
     items = document.getElementsByClassName("item");
     imageNum = 0;
     playing = false;
-
     constructor() {
         document.getElementById("bouttonDroit").addEventListener("click", () => this.suivant());
         document.getElementById("bouttonGauche").addEventListener("click", () => this.precedent());
@@ -12,7 +10,6 @@ class Diaporama {
         document.addEventListener("keydown", () => this.clavier(event));
     }
     auto = setInterval(() => this.suivant(), 5000);
-
     // Bouton 
     suivant = () => {
         this.items[this.imageNum].style.opacity = "0";
@@ -37,23 +34,18 @@ class Diaporama {
         this.playing = false;
         clearInterval(this.auto);
     }
-
     play = () => {
         this.playing = true;
         this.auto = setInterval(() => {
             this.suivant()
         }, 5000)
     }
-
     // Fonction clavier 
     clavier = (e) => {
-
         if (e.keyCode === 39) {
             document.addEventListener("keydown", this.suivant());
-
         } else if (e.keyCode === 37) {
             document.addEventListener("keydown", this.precedent());
-
         }
     }
 }

@@ -16,7 +16,7 @@ class Map {
   //* Récuperons les données de l'api */
   stationaff() {
     this.ajaxGet(this.url, (reponse) => {
-      let results = JSON.parse(reponse);
+      const results = JSON.parse(reponse);
       for (let i = 0; i < results.length; i++) {
         const station = results[i];
         const marker =
@@ -25,7 +25,7 @@ class Map {
         marker.addTo(this.mymap)
           .bindPopup("<b>" + station.name + "</b><br>" + station.available_bikes + " vélos disponinbles");
         marker.addEventListener('click', () => {
-          if (document.getElementById("info").style.display == "none") {
+          if (document.getElementById("info").style.display === "none") {
             document.getElementById("info").style.display = "initial"
           }
           //**masque le canvas et le form lors un nouveau click */
@@ -60,8 +60,6 @@ class Map {
       document.getElementById("canvas").style.display = "initial"
     })
   }
-
-
   ajaxGet(url, callback) {
     const req = new XMLHttpRequest()
     req.open("GET", url)
@@ -77,11 +75,8 @@ class Map {
     })
     req.send(null)
   }
-
   // Méthode pour ajouter des markers de couleurs selon le status de la station 
-
   getMarkerColor(station) {
-
     let colorMarker = 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png';
     const pinSize = [25, 41];
     if (station.available_bikes > 7) {
@@ -107,8 +102,6 @@ class Map {
       shadowSize: [41, 41]
     });
   }
-
-
   //* Reservation ------------------------//
   reservation() {
     const bookingButton = document.getElementById("bouttonr")
@@ -134,9 +127,9 @@ class Map {
         const bookingStepTwo = document.getElementById("bouttonnext");
         bookingStepTwo.addEventListener("click", () => {
 
-          if (autoCompName.value === "" && autoCompFirstname.value == "") {
+          if (autoCompName.value === "" && autoCompFirstname.value === "") {
             alert("Merci de tout remplir")
-          } else if (autoCompName.value === "" || autoCompFirstname.value == "") {
+          } else if (autoCompName.value === "" || autoCompFirstname.value === "") {
             alert("Il semblerait que vous ayez oublié de renseigner un champ")
           } else {
             let userNameField = document.getElementById("inputName").value
@@ -152,8 +145,6 @@ class Map {
       }
     })
   }
-
-
 }
 
 

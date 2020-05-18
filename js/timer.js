@@ -14,9 +14,7 @@ class Timer {
         const now = new Date()
         const nowTime = now.getTime()
         const diff = (this.startDate + this.delay) - nowTime
-
         return diff <= 0 ? 0 : diff;
-
     }
     run() {
         if (!this.startDate) {
@@ -24,7 +22,6 @@ class Timer {
             this.startDate = now.getTime()
             sessionStorage.setItem("startDate", this.startDate)
         }
-
         const updateTime = () => {
             const remainingTime = this.getRemainingTime()
             if (remainingTime === 0) {
@@ -40,12 +37,9 @@ class Timer {
         updateTime()
         this.interval = setInterval(updateTime, 1000)
     }
-
     renderT(remainingTime) {
-
         const minutes = Math.floor(remainingTime / 60000);
         const seconds = Math.floor((remainingTime % 60000) / 1000).toFixed(0);
-
         if (isNaN(minutes) && isNaN(seconds)) {
             this.el.textContent = " "
         } else if (minutes >= 1) {
@@ -56,7 +50,6 @@ class Timer {
             this.el.textContent = "Vous avez réservé un vélo sur la station " + sessionStorage.getItem("currentStation") + " - " + seconds + "s restantes avant expiration de la réservation"
         }
     }
-
     // Finaliser la reservation
     finaleR() {
         sessionStorage.removeItem("startDate")
@@ -74,9 +67,7 @@ class Timer {
         document.getElementById("canvasB").style.display = "none"
         timer.getRemainingTime()
         timer.run()
-
     }
-
     // annulation 
     cancel() {
         if (sessionStorage.getItem("startDate") > 1) {
@@ -90,7 +81,6 @@ class Timer {
             document.getElementById("panel").style.border = "0px"
         }
     }
-
     // rappel de le réservation fenêtre d'alerte
     onLoad() {
         if (sessionStorage.getItem("startDate")) {
@@ -101,7 +91,6 @@ class Timer {
             timer.run()
         }
     }
-
 }
 
 
