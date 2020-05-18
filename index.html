@@ -6,8 +6,7 @@
   <link rel="stylesheet" href="stylesheet.css">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link href="https://fonts.googleapis.com/css2?family=Alike&family=Archivo+Narrow&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Fredoka+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=PT+Serif&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
     integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
     crossorigin="" />
@@ -15,18 +14,29 @@
   <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
     integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
     crossorigin=""></script>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 </head>
 
 <body>
   <header>
     <div class="tete">
-      <p class="slogan "> Vélo' <span id="L"> Lyon</span></p>
+      <p class="slogan "> <b>Vélo' <span id="L"> Lyon</b></span></p>
     </div>
   </header>
+  <div id="pre">
+    <img src="image/pre.jpg" alt="tetevelo">
+    <figcaption>
+      <b> Location de vélos 24/7</b> <br>
+      Trouvez un vélo près de vous<br>
+      et réservez-le depuis votre navigateur<br>
+      <button id="ici"><a href="#mapid">Réserver</a> </button>
+    </figcaption>
+  </div>
   <!-- SLIDER-->
   <div id="diaporama">
+    <h1> Comment ça marche? </h1>
+
     <button id="bouttonGauche"><svg class="bi bi-caret-left" width="1em" height="1em" viewBox="0 0 16 16"
         fill="currentColor" xmlns="http://www.w3.org/2000/svg">
         <path fill-rule="evenodd"
@@ -51,21 +61,22 @@
     <div id="caroussel">
       <figure class="item">
         <img src="image/Velov1.gif">
-        <figcaption> 1: Choisissez votre station</figcaption>
+        <figcaption> 1: Trouvez votre vélo à la station de départ choisie.</figcaption>
       </figure>
       <figure class="item">
         <img src="image/Velov1.gif">
         <figcaption>
           2: Cliquez sur le bouton de réservation, <br>
-          rentrez votre prénom et nom
+          rentrez votre prénom et nom.
         </figcaption>
       </figure>
       <figure class="item">
         <img src="image/Velov1.gif">
         <figcaption>
-          3: Signez,validez et roulez <br>
-
+          3: Signez dans le cadre ,validez et roulez.<br>
+          Rendez le vélo à une station d’arrivée disponible.
         </figcaption>
+
       </figure>
     </div>
     <button id="bouttonDroit"><svg class="bi bi-caret-right" width="1em" height="1em" viewBox="0 0 16 16"
@@ -75,24 +86,23 @@
           clip-rule="evenodd" />
       </svg></button>
   </div>
-
   <div id="infoM">
     <div id="containerI">
       <figure>
         <img src="image/marker-icon-2x-green.png" alt="open">
-        <p>Ouverte</p>
+        <p> <b> Ouverte</b></p>
       </figure>
       <figure>
         <img src="image/marker-icon-2x-orange.png">
-        <p>Moins de 7 vélos</p>
+        <p><b> Moins de 7 vélos</b></p>
       </figure>
       <figure>
         <img src="image/marker-icon-2x-red.png" alt="">
-        <p> Pas de vélo disponible </p>
+        <p> <b>Pas de vélo disponible </b> </p>
       </figure>
       <figure>
         <img src="image/marker-icon-2x-black.png" alt="">
-        <p>Fermée</p>
+        <p><b>Fermée</b></p>
       </figure>
     </div>
   </div>
@@ -150,15 +160,15 @@
       </div>
     </div>
   </div>
-
+  <footer> Projet de formation Openclassrooms par Sandra B<br>
+    Ce n'est pas un vrai site de location
+  </footer>
   <!-- Fichier JS ------------------------------------------------------->
   <script src="js/map.js"></script>
   <script src="js/timer.js"></script>
   <script src="js/slider.js"></script>
   <script src="js/signature.js"></script>
   <script src="js/main.js"></script>
-
-
 </body>
 
 </html>
