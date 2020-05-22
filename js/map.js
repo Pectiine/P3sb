@@ -12,6 +12,13 @@ class Map {
     this.reservation()
     this.stationaff()
     this.newCanvas()
+    this.autoCompName = document.getElementById("inputName")
+    this.autoCompFirstname = document.getElementById("inputFirst")
+    this.bookingButton = document.getElementById("bouttonr")
+    this.bookingStepTwo = document.getElementById("bouttonnext")
+    this.bookingButton.addEventListener("click", (e) => this.newCanvas(e));
+    this.bookingStepTwo.addEventListener("click", (e) => this.completR(e));
+
   }
   //* Récuperons les données de l'api */
   stationaff() {
@@ -19,61 +26,60 @@ class Map {
       const results = JSON.parse(reponse);
       for (let i = 0; i < results.length; i++) {
         const station = results[i];
-        const marker =
-          L.marker([station.position.lat, station.position.lng], { icon: this.getMarkerColor(station) })
-        marker.options.station = station
-        marker.addTo(this.mymap)
-          .bindPopup("<b>" + station.name + "</b><br>" + station.available_bikes + " vélos disponinbles");
-        marker.addEventListener('click', () => {
-          if (document.getElementById("info").style.display === "none") {
-            document.getElementById("info").style.display = "initial"
-          }
-          //**masque le canvas et le form lors un nouveau click */
-          document.getElementById("canvasB").style.display = "none"
-          document.getElementById("reservation").style.display = "none"
-          //Affichage des infos stations
-          const status = station.status === "OPEN" ? "Ouverte" : "Fermée";
-          const stationNameField = document.getElementById("stationName")
-          const adresseField = document.getElementById("adress")
-          const nbrePlacesField = document.getElementById("number")
-          const nbreVelosField = document.getElementById("velodispo")
-          const stationStatusField = document.getElementById("stationd")
-          stationNameField.textContent = station.name
-          adresseField.textContent = station.address
-          nbrePlacesField.textContent = station.available_bike_stands
-          nbreVelosField.textContent = station.available_bikes
-          stationStatusField.textContent = status
-          //Bouton reserver   
-          const bookingButton = document.getElementById("bouttonr")
-          bookingButton.style.display = "initial"
-        })
-
+        this.markerF(station);
       }
     })
   }
-  //* efface le canvas 
-  newCanvas() {
-    const bookingButton = document.getElementById("bouttonr")
-    bookingButton.addEventListener("click", () => {
-      const context = canvas.getContext("2d")
-      context.clearRect(0, 0, canvas.width, canvas.height)
-      document.getElementById("canvas").style.display = "initial"
+  // création de marker 
+  markerF(station) {
+    const marker = L.marker([station.position.lat, station.position.lng], { icon: this.getMarkerColor(station) });
+    marker.options.station = station;
+    marker.addTo(this.mymap)
+      .bindPopup("<b>" + station.name + "</b><br>" + station.available_bikes + " vélos disponinbles");
+    marker.addEventListener('click', () => {
+      this.stationaff.marker;
+      // affichage du bouton réservation
+      if (document.getElementById("info").style.display === "none") {
+        document.getElementById("info").style.display = "initial";
+      }
+      // masque le canvas et le form lors un nouveau click 
+      document.getElementById("canvasB").style.display = "none";
+      document.getElementById("reservation").style.display = "none";
+      //Affichage des infos stations
+      const status = station.status === "OPEN" ? "Ouverte" : "Fermée";
+      const stationNameField = document.getElementById("stationName");
+      const adresseField = document.getElementById("adress");
+      const nbrePlacesField = document.getElementById("number");
+      const nbreVelosField = document.getElementById("velodispo");
+      const stationStatusField = document.getElementById("stationd");
+      stationNameField.textContent = station.name;
+      adresseField.textContent = station.address;
+      nbrePlacesField.textContent = station.available_bike_stands;
+      nbreVelosField.textContent = station.available_bikes;
+      stationStatusField.textContent = status;
+      this.bookingButton.style.display = "initial";
     })
+  }
+  // Efface le canvas 
+  newCanvas() {
+    const context = canvas.getContext("2d");
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    document.getElementById("canvas").style.display = "initial";
   }
   ajaxGet(url, callback) {
     const req = new XMLHttpRequest()
-    req.open("GET", url)
+    req.open("GET", url);
     req.addEventListener("load", function () {
       if (req.status >= 200 && req.status < 400) {
-        callback(req.responseText)
+        callback(req.responseText);
       } else {
-        console.error(req.status + " " + req.statusText + " " + url)
+        console.error(req.status + " " + req.statusText + " " + url);
       }
     })
     req.addEventListener("error", function () {
-      console.error("Erreur réseau avec l'URL " + url)
+      console.error("Erreur réseau avec l'URL " + url);
     })
-    req.send(null)
+    req.send(null);
   }
   // Méthode pour ajouter des markers de couleurs selon le status de la station 
   getMarkerColor(station) {
@@ -104,48 +110,47 @@ class Map {
   }
   //* Reservation ------------------------//
   reservation() {
-    const bookingButton = document.getElementById("bouttonr")
+    const bookingButton = document.getElementById("bouttonr");
     bookingButton.addEventListener("click", () => {
-      const bikeCount = document.getElementById("velodispo").textContent
+      const bikeCount = document.getElementById("velodispo").textContent;
       if (bikeCount <= 0) {
-        alert("Aucun vélo n'est disponible")
+        alert("Aucun vélo n'est disponible");
       }
       else {
-        document.getElementById("bouttonr").style.display = "none"
-        document.getElementById("reservation").style.display = "initial"
+        document.getElementById("bouttonr").style.display = "none";
+        document.getElementById("reservation").style.display = "initial";
 
-        let autoCompName = document.getElementById("inputName")
-        let autoCompFirstname = document.getElementById("inputFirst")
+        let autoCompName = document.getElementById("inputName");
+        let autoCompFirstname = document.getElementById("inputFirst");
 
         if (localStorage) {
-          autoCompName.value = localStorage.getItem("nom")
-          autoCompFirstname.value = localStorage.getItem("prenom")
+          autoCompName.value = localStorage.getItem("nom");
+          autoCompFirstname.value = localStorage.getItem("prenom");
         } else {
-          autoCompName.value = ""
-          autoCompFirstName.value = ""
+          autoCompName.value = "";
+          autoCompFirstName.value = "";
         }
-        const bookingStepTwo = document.getElementById("bouttonnext");
-        bookingStepTwo.addEventListener("click", () => {
-
-          if (autoCompName.value === "" && autoCompFirstname.value === "") {
-            alert("Merci de tout remplir")
-          } else if (autoCompName.value === "" || autoCompFirstname.value === "") {
-            alert("Il semblerait que vous ayez oublié de renseigner un champ")
-          } else {
-            let userNameField = document.getElementById("inputName").value
-            let userFirstnameField = document.getElementById("inputFirst").value
-            localStorage.setItem("nom", userNameField)
-            localStorage.setItem("prenom", userFirstnameField)
-            document.getElementById("canvasB").style.display = "initial"
-            document.getElementById("reservation").style.display = "none"
-            document.getElementById("bouttonf").style.display = "initial"
-            document.getElementById("canvas").scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
-          }
-        })
       }
     })
   }
+  completR() {
+    if (this.autoCompName.value === "" && this.autoCompFirstname.value === "") {
+      alert("Merci de tout remplir");
+    } else if (this.autoCompName.value === "" || this.autoCompFirstname.value === "") {
+      alert("Il semblerait que vous ayez oublié de renseigner un champ");
+    } else {
+      let userNameField = document.getElementById("inputName").value;
+      let userFirstnameField = document.getElementById("inputFirst").value;
+      localStorage.setItem("nom", userNameField);
+      localStorage.setItem("prenom", userFirstnameField);
+      document.getElementById("canvasB").style.display = "initial";
+      document.getElementById("reservation").style.display = "none";
+      document.getElementById("bouttonf").style.display = "initial";
+      document.getElementById("canvas").scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
+    }
+  }
 }
+
 
 
 
