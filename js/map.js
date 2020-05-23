@@ -37,7 +37,6 @@ class Map {
     marker.addTo(this.mymap)
       .bindPopup("<b>" + station.name + "</b><br>" + station.available_bikes + " vélos disponinbles");
     marker.addEventListener('click', () => {
-      this.stationaff.marker;
       // affichage du bouton réservation
       if (document.getElementById("info").style.display === "none") {
         document.getElementById("info").style.display = "initial";
